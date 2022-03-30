@@ -239,10 +239,12 @@ $size : 200px; - 전역 변수
 &.built-in {
     background-color:grayscale($color);
   } 
+
 //invert($color) 색상 반전
 &.built-in {
     background-color:invert($color);
   } 
+  
 //rgba($color,0.5) 투명도
 &.built-in {
     background-color:rgba($color,.5);
