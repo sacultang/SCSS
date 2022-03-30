@@ -1,4 +1,4 @@
-### SCSS
+# SCSS
 
 * parcel-bundler 가 scss 파일을 변환해서
 브라우저에서 보여주게 함  
@@ -6,7 +6,7 @@
 SCSS > CSS 변환 사이트  
 https://www.sassmeister.com/
 
-중첩 선택
+## 중첩 선택
 ```SCSS
 .container { // .container h1 {}
   h1 {
@@ -15,14 +15,14 @@ https://www.sassmeister.com/
 }
 ```
 
-\> -  자식 선택자
+## \> -  자식 선택자
 ```scss
 .container { // .container > ul {}
   > ul {
   }
 }
 ```
-& - 상위 선택자 참조
+## & - 상위 선택자 참조
 ```scss
 .btn { // .btn.active{}
   position : absolute;
@@ -44,7 +44,7 @@ https://www.sassmeister.com/
 }
 // .fs-small : {font-size:12px;}
 ```
-중첩된 속성
+## 중첩된 속성
 ```scss
 .box {
     font: {
@@ -76,7 +76,7 @@ https://www.sassmeister.com/
 } */
 ```
 
-변수 (Variables)
+## 변수 (Variables)
 
 ```SCSS
 $color : royalblue; // 변수 지정
@@ -102,7 +102,7 @@ $size : 200px; - 전역 변수
   transform: translteX(200px);
 } */
 ```
-@mixin - 재활용 코드
+## @mixin - 재활용 코드
 ```SCSS
 @mixin center {
     display:flex;
@@ -169,7 +169,7 @@ $size : 200px; - 전역 변수
 }
 */
 ```
-반복문 @for
+## 반복문 @for
 ```SCSS
 @for $i from 1 through 10{
   .box:nth-child(#{$1}){ // scss 보간법 #{변수}
@@ -178,7 +178,7 @@ $size : 200px; - 전역 변수
 }
 ```
 
-함수 
+## 함수 
 ```SCSS
 @function ratio($size,$ratio){
   @return $size * $ratio
@@ -197,7 +197,7 @@ $size : 200px; - 전역 변수
 */
 ```
 
-색상 내장 함수
+## 색상 내장 함수
 ```SCSS
 // mix(color1,color2) 두 색상을 혼합함
 .box {
@@ -249,4 +249,49 @@ $size : 200px; - 전역 변수
 &.built-in {
     background-color:rgba($color,.5);
   } 
+```
+## SCSS 데이터 종류
+```SCSS
+$number : 1; //.5,100px,1em
+$string:bold; //relative,"../images/a.png"
+$color:red; // blue,#fff00,rgba(0,0,0,0.1);
+$boolean:true; //false
+$null:null;
+$list: orange,royalblue,yellow;
+$map: (
+  o:orange,
+  r:royalblue,
+  y:yellow
+)
+
+@each $c in $list { //list에 값들이 $c에 저장되어 반복 출력됨
+  .box {
+    color : $c;
+  }
+}
+
+@each $key, $value in $map { 
+  .box-#{$key} {
+    color :$value;
+  }
+}
+```
+
+## @content 
+```scss
+@mixin left-top { //새로 작성한 내용이 @content 부분으로 들어감
+  position:absolute;
+  top:0;
+  left:0;
+  @content;
+}
+.box {
+  width:200px;
+  height:300px;
+  @include left-top {
+    bottom:0;
+    right:0;
+    margin:auto;
+  }
+}
 ```
